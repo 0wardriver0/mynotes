@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Notes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📝 My Notes</h1>
+      <p>Capture your thoughts and ideas</p>
+    </div>
+
+    <div class="controls">
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search notes..." />
+        <span class="search-icon">🔍</span>
+      </div>
+      <button id="addNoteBtn" class="add-note-btn">+ Add New Note</button>
+      
+      <input type="file" id="importFile" style="display: none" />
+      <button id="importBtn" class="add-note-btn">⬆ Import Notes</button>
+
+      <button id="exportBtn" class="add-note-btn">⬇ Export Notes</button>
+    </div>
+
+    <div id="notesGrid" class="notes-grid">
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+        </svg>
+        <h3>No notes yet</h3>
+        <p>Click "Add New Note" to create your first note</p>
+      </div>
+    </div>
+
+    <div id="pagination" class="pagination"></div>
+  </div>
+
+  <div id="noteModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add New Note</h3>
+        <span id="noteModalClose" class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="noteForm">
+          <div class="form-group">
+            <label for="noteTitle">Title</label>
+            <input type="text" id="noteTitle" required />
+          </div>
+          <div class="form-group">
+            <label for="noteContent">Content</label>
+            <textarea id="noteContent" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imageInput">Attach Image (optional)</label>
+            <input type="file" id="imageInput" accept="image/*" />
+          </div>
+          <div class="modal-actions">
+            <button type="button" id="cancelBtn" class="btn-secondary">Cancel</button>
+            <button type="submit" class="btn-primary">Save Note</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close" id="imageModalClose">&times;</span>
+    <img class="modal-image" id="modalImage" src="" alt="Enlarged Image" />
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
